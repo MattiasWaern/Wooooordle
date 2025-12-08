@@ -15365,62 +15365,105 @@ function deleteKey() {
 }
 
 function submitGuess() {
-  const activeTiles = [...getActiveTiles()]
+  const activeTiles = [...getActiveTiles()];
   if (activeTiles.length !== WORD_LENGTH) {
-    showAlert("Not enough letters")
-    shakeTiles(activeTiles)
-    return
+    showAlert("Not enough letters");
+    shakeTiles(activeTiles);
+    return;
   }
 
   const guess = activeTiles.reduce((word, tile) => {
-    return word + tile.dataset.letter
-  }, "")
+    return word + tile.dataset.letter;
+  }, "");
 
   if (!dictionary.includes(guess)) {
-    showAlert("Not in word list")
-    shakeTiles(activeTiles)
-    return
+    showAlert("Not in word list");
+    shakeTiles(activeTiles);
+    return;
   }
 
-  stopInteraction()
-  activeTiles.forEach((...params) => flipTile(...params, guess))
+  //tvåpass-logik för att bestämma states korrekt ---
+  const targetLetters = targetWord.split(""); 
+  const guessLetters = guess.split("");
+
+  // Initiera states som "wrong"
+  const states = new Array(WORD_LENGTH).fill("wrong");
+
+  // PASS 1: markera gröna (correct) och "förbruka" målbokstaven
+  for (let i = 0; i < WORD_LENGTH; i++) {
+    if (guessLetters[i] === targetLetters[i]) {
+      states[i] = "correct";
+      targetLetters[i] = null; // förbrukad
+    }
+  }
+
+  // PASS 2: markera gula (wrong-location) där fortfarande kvarvarande bokstäver finns
+  for (let i = 0; i < WORD_LENGTH; i++) {
+    if (states[i] === "correct") continue;
+    const idx = targetLetters.indexOf(guessLetters[i]);
+    if (idx !== -1) {
+      states[i] = "wrong-location";
+      targetLetters[idx] = null; // förbrukad
+    }
+  }
+ 
+
+  stopInteraction();
+
+  // skicka med den beräknade staten för varje tile till flipTile
+  activeTiles.forEach((tile, index, array) => {
+    flipTile(tile, index, array, guess, states[index]);
+  });
 }
 
-function flipTile(tile, index, array, guess) {
-  const letter = tile.dataset.letter
-  const key = keyboard.querySelector(`[data-key="${letter}"i]`)
+function flipTile(tile, index, array, guess, finalState) {
+  const letter = tile.dataset.letter;
+  const key = keyboard.querySelector(`[data-key="${letter}"i]`);
+
+  // animation trigger
   setTimeout(() => {
-    tile.classList.add("flip")
-  }, (index * FLIP_ANIMATION_DURATION) / 2)
+    tile.classList.add("flip");
+  }, (index * FLIP_ANIMATION_DURATION) / 2);
 
   tile.addEventListener(
     "transitionend",
     () => {
-      tile.classList.remove("flip")
-      if (targetWord[index] === letter) {
-        tile.dataset.state = "correct"
-        key.classList.add("correct")
-      } else if (targetWord.includes(letter)) {
-        tile.dataset.state = "wrong-location"
-        key.classList.add("wrong-location")
-      } else {
-        tile.dataset.state = "wrong"
-        key.classList.add("wrong")
+      tile.classList.remove("flip");
+
+      // sätt redan beräknad state — don't recompute here
+      tile.dataset.state = finalState;
+
+      // uppdatera tangentbordets klass baserat på finalState
+      if (key) {
+        if (finalState === "correct") {
+          key.classList.add("correct");
+        } else if (finalState === "wrong-location") {
+          // lägg bara till yellow/ wrong-location om inte redan correct
+          if (!key.classList.contains("correct")) {
+            key.classList.add("wrong-location");
+          }
+        } else {
+          // bara lägg till wrong om den inte redan är correct eller wrong-location
+          if (!key.classList.contains("correct") && !key.classList.contains("wrong-location")) {
+            key.classList.add("wrong");
+          }
+        }
       }
 
+      // När sista tile är klar, vänta ytterligare transitionend en gång innan vi återstartar input
       if (index === array.length - 1) {
         tile.addEventListener(
           "transitionend",
           () => {
-            startInteraction()
-            checkWinLose(guess, array)
+            startInteraction();
+            checkWinLose(guess, array);
           },
           { once: true }
-        )
+        );
       }
     },
     { once: true }
-  )
+  );
 }
 
 function getActiveTiles() {
