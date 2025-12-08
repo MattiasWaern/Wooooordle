@@ -32,6 +32,7 @@ html, body {
   grid-auto-rows: 3em;
   gap: .25em;
   justify-content: center;
+  touch-action: none
 }
 
 .key {
@@ -54,7 +55,7 @@ html, body {
   user-select: none;
   transition: all 0.2s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  touch-action: manipulation;
+  touch-action: none
 }
 
 .key.large {
