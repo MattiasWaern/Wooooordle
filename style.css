@@ -11,7 +11,16 @@ body {
   margin: 0;
   padding: 1em;
   font-size: clamp(.5rem, 2.5vmin, 1.5rem);
+  overflow-x: hidden;
 }
+
+   h1 {
+      text-align: center;
+      color: white;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      margin: 0.5em 0;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
 
 .keyboard {
   display: grid;
@@ -39,6 +48,8 @@ body {
   border-radius: .25em;
   cursor: pointer;
   user-select: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .key.large {
@@ -52,7 +63,14 @@ body {
 
 .key:hover, .key:focus {
   --lightness-offset: 10%;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
+
+ .key:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
  .key.wrong {
       --hue: 0;

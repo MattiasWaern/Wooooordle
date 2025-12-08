@@ -15497,7 +15497,7 @@ function retryButton() {
   btn.addEventListener("click", () => {
     setTimeout(() => {
       location.reload();
-    }, 1000); 
+    }, 500); 
   });
 }
 
