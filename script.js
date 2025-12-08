@@ -15291,9 +15291,10 @@ const dictionary = [
 ]
 const WORD_LENGTH = 5;
 const FLIP_ANIMATION_DURATION = 500
-const keyboard = document.querySelector("[data-keyboard]");
-const alertContainer = document.querySelector("[data-alert-container]");
-const guessGrid = document.querySelector("[data-guess-grid]");
+const DANCE_ANIMATION_DURATION = 500
+const keyboard = document.querySelector("[data-keyboard]")
+const alertContainer = document.querySelector("[data-alert-container]")
+const guessGrid = document.querySelector("[data-guess-grid]")
 const offsetFromDate = new Date(2025, 13, 8)
 const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
