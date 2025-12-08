@@ -1,9 +1,11 @@
 *, *::after, *::before {
   box-sizing: border-box;
   font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', cursive, sans-serif;
+  touch-action: manipulation;
+  overscroll-behavior: none;
 }
 
-body {
+html, body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   display: flex;
   flex-direction: column;
@@ -12,6 +14,8 @@ body {
   padding: 1em;
   font-size: clamp(.7rem, 2.5vmin, 1.5rem);
   overflow-x: hidden;
+  touch-action: manipulation;
+  overscroll-behavior: none;
 }
 
    h1 {
@@ -50,6 +54,7 @@ body {
   user-select: none;
   transition: all 0.2s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  touch-action: manipulation;
 }
 
 .key.large {
