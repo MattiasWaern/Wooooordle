@@ -118,6 +118,10 @@ body{
     animation: shake 250ms ease-in-out;
 }
 
+.tile.dance{
+    animation: dance 500 ease-in-out;
+}
+
 .tile.flip{
     transform: rotateX(90deg);
 }

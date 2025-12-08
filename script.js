@@ -15388,7 +15388,7 @@ function submitGuess(){
 
 function flipTile(tile, index, guess){
   const letter = tile.dataset.letter
-  const key = keyboard.querySelector(`[data-key="${letter}"]`)
+  const key = keyboard.querySelector(`[data-key="${letter}"i]`)
   setTimeout(() => {
     tile.classList.add("flip")
   }, index * FLIP_ANIMATION_DURATION / 2)
@@ -15409,8 +15409,9 @@ function flipTile(tile, index, guess){
     if (index === array.length - 1 ){
       tile.addEventListener("transitionend")
       startInteraction()
-    }
-  })
+      checkWinLose(guess, array)
+    }, {once: true})
+  }, {once: true})
 }
 
 function getActiveTiles(){
@@ -15434,9 +15435,30 @@ function showAlert(message, duration = 1000){
 
 function shakeTiles(tiles){
   tiles.forEach(tile => {
-    tiles.classList.add("shake")
+    tile.classList.add("shake")
     tile.addEventListener("animationend", () => {
-      tiles.classList.remove("shake")
-  },  {once: true})
-})
+      tile.classList.remove("shake")
+    }, {once: true})
+  })
+}
+
+function checkWinLose(guess, tiles) {
+  if (guess === targetWord){
+    showAlert("You win", 5000)
+    danceTiles(tiles)
+    stopInteraction()
+    return
+  }
+}
+
+function danceTiles(tiles){
+  tiles.forEach((tile, index) => {
+    setTimeout(() => {
+    tile.classList.add("dance")
+    tile.addEventListener("animationend", () => {
+      tile.classList.remove("dance")
+    }, 
+    {once: true})
+  
+  })
 }
