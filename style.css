@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 1em;
-  font-size: clamp(.5rem, 2.5vmin, 1.5rem);
+  font-size: clamp(.7rem, 2.5vmin, 1.5rem);
   overflow-x: hidden;
 }
 
@@ -282,7 +282,7 @@ body {
 
      @media (max-width: 768px) {
       .keyboard {
-        grid-template-columns: repeat(20, minmax(auto, 1em));
+        grid-template-columns: repeat(20, minmax(auto, 2em));
         grid-auto-rows: 2.5em;
         gap: .2em;
       }
@@ -290,24 +290,24 @@ body {
 
     @media (max-width: 480px) {
       .keyboard {
-        grid-template-columns: repeat(20, minmax(auto, 0.8em));
-        grid-auto-rows: 2em;
+        grid-template-columns: repeat(20, minmax(auto, 1.6em));
+        grid-auto-rows: 6em;
         gap: .15em;
       }
     }
 
     @media (max-width: 768px) {
       .guess-grid {
-        grid-template-columns: repeat(5, 3.5em);
-        grid-template-rows: repeat(6, 3.5em);
+        grid-template-columns: repeat(5, 7em);
+        grid-template-rows: repeat(6, 7em);
         gap: .3em;
       }
     }
 
     @media (max-width: 480px) {
       .guess-grid {
-        grid-template-columns: repeat(5, 3em);
-        grid-template-rows: repeat(6, 3em);
+        grid-template-columns: repeat(5, 6em);
+        grid-template-rows: repeat(6, 6em);
         gap: .25em;
       }
     }
