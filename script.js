@@ -15298,7 +15298,7 @@ const guessGrid = document.querySelector("[data-guess-grid]")
 const offsetFromDate = new Date(2022, 0, 1)
 const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1000 / 60 / 60 / 24
-const targetWord = targetWords[Math.floor(dayOffset)]
+const targetWord = targetWords[Math.floor(Math.random() * targetWords.length)]
 
 startInteraction()
 
@@ -15460,12 +15460,15 @@ function checkWinLose(guess, tiles) {
     showAlert("You Win", 5000)
     danceTiles(tiles)
     stopInteraction()
+    retryButton()
     return
   }
 
+
   const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
   if (remainingTiles.length === 0) {
-    showAlert(targetWord.toUpperCase(), null)
+    showAlert("The word was: " + targetWord.toUpperCase(), null)
+    showAlert("You Lost lol", 5000)
     stopInteraction()
   }
 }
@@ -15484,3 +15487,10 @@ function danceTiles(tiles) {
     }, (index * DANCE_ANIMATION_DURATION) / 5)
   })
 }
+
+function retryButton(){
+  document.getElementById("retry-button")
+  
+}
+
+console.log(targetWord)

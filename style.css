@@ -206,3 +206,16 @@ body {
 .alert.hide {
   opacity: 0;
 }
+
+#retry-button{
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100px;
+    border-radius: 15px;
+    top: 30vh;
+    left: 30vw;
+    transform: translateX(-50%);
+}
