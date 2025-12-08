@@ -15457,7 +15457,7 @@ function shakeTiles(tiles) {
 
 function checkWinLose(guess, tiles) {
   if (guess === targetWord) {
-    showAlert("You Win", 5000)
+    showAlert("DU VANN ✨", 5000)
     danceTiles(tiles)
     stopInteraction()
     retryButton()
@@ -15467,9 +15467,10 @@ function checkWinLose(guess, tiles) {
 
   const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
   if (remainingTiles.length === 0) {
-    showAlert("The word was: " + targetWord.toUpperCase(), null)
-    showAlert("You Lost lol", 5000)
+    showAlert("Ordet var: " + targetWord.toUpperCase(), null)
+    showAlert("Du förlorade lol", 5000)
     stopInteraction()
+    retryButton();
   }
 }
 
@@ -15488,9 +15489,16 @@ function danceTiles(tiles) {
   })
 }
 
-function retryButton(){
-  document.getElementById("retry-button")
-  
+function retryButton() {
+  const btn = document.getElementById("retry-button");
+
+  btn.style.display = "flex";
+
+  btn.addEventListener("click", () => {
+    setTimeout(() => {
+      location.reload();
+    }, 1000); 
+  });
 }
 
 console.log(targetWord)
