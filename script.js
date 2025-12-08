@@ -15362,7 +15362,7 @@ function deleteKey(){
   delete lastTile.dataset.letter
 }
 
-function sumbitGuess(){
+function submitGuess(){
   const activeTiles = [...getActiveTiles()]
   if (activeTiles.length !== WORD_LENGTH){
     showAlert("Not enough letters")
@@ -15370,7 +15370,7 @@ function sumbitGuess(){
     return
   }
 
-  const guess = activeTiles.reduice((word, tile) => {
+  const guess = activeTiles.reduce((word, tile) => {
     return word + tile.dataset.letter
   }, "")
   console.log(guess)
@@ -15382,16 +15382,35 @@ function sumbitGuess(){
   }
 
   stopInteraction()
-  activeTiles.forEach((..params) => flipTile(..params, guess))
-  
+  activeTiles.forEach((tile, index) => flipTile(tile, index, guess))
+
 }
 
-function flipTile(tile, index, array, guess){
+function flipTile(tile, index, guess){
   const letter = tile.dataset.letter
-  const key = Keyboard.querySelector(`[data-key="${letter}"]`)
+  const key = keyboard.querySelector(`[data-key="${letter}"]`)
   setTimeout(() => {
     tile.classList.add("flip")
   }, index * FLIP_ANIMATION_DURATION / 2)
+
+  tile.addEventListener("transitionend", () =>{
+    tile.classList.remove("flip")
+    if(targetWord[index] === letter) {
+      tile.dataset.state = "correct"
+      key.classList.add("correct")
+    } else if (targetWord.includes(letter)){
+      tile.dataset.state = "wrong-location"
+      key.classList.add("wrong-location")
+    } else {
+      tile.dataset.state = "wrong"
+      key.classList.add("wrong")
+    }
+
+    if (index === array.length - 1 ){
+      tile.addEventListener("transitionend")
+      startInteraction()
+    }
+  })
 }
 
 function getActiveTiles(){
