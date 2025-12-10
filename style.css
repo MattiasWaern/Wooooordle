@@ -296,7 +296,7 @@ h1 {
   height: 50px;
   width: 150px;
   border-radius: 25px;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: linear-gradient(145deg, #ff9ed8, #ff6bc1);
@@ -307,6 +307,8 @@ h1 {
   cursor: pointer;
   box-shadow: 0 15px 30px rgba(255, 105, 180, 0.4), 0 8px 0 #ff8ac6;
   transition: all 0.3s ease;
+
+  z-index: 2;
 }
 
 #retry-button:hover {
