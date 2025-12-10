@@ -303,6 +303,14 @@ h1 {
   }
 }
 
+@media (max-width: 390px) {
+  .keyboard {
+    grid-template-columns: repeat(20, minmax(auto, 1.4em));
+    grid-auto-rows: 6em;
+    gap: 0.15em;
+  }
+}
+
 @media (max-width: 768px) {
   .guess-grid {
     grid-template-columns: repeat(5, 7em);
@@ -315,6 +323,14 @@ h1 {
   .guess-grid {
     grid-template-columns: repeat(5, 6em);
     grid-template-rows: repeat(6, 6em);
+    gap: 0.25em;
+  }
+}
+
+@media (max-width: 390px) {
+  .guess-grid {
+    grid-template-columns: repeat(5, 5em);
+    grid-template-rows: repeat(6, 5em);
     gap: 0.25em;
   }
 }
