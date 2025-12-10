@@ -9,12 +9,13 @@
 
 html,
 body {
-   background: linear-gradient(135deg, 
-    #ffb8e7 0%, 
-    #a6d1ff 25%, 
-    #ffd6e7 50%, 
-    #c5a8ff 75%, 
-    #ffcfe5 100%);
+  position: relative;
+  background: linear-gradient(135deg, 
+  #ffb8e7 0%, 
+  #a6d1ff 25%, 
+  #ffd6e7 50%, 
+  #c5a8ff 75%, 
+  #ffcfe5 100%);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -26,6 +27,34 @@ body {
   overscroll-behavior: none;
 }
 
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: 
+  url(./images/bakgrund.jpg),
+  url(./images/bakgrund2.jpg);
+
+  background-size: 
+  cover,
+  cover;
+
+  background-position: 
+  center,
+  center;
+  
+  background-repeat: 
+  no-repeat,
+  no-repeat;
+
+  background-blend-mode: multiply;
+
+  opacity: 12%;
+}
+
+
+
 h1 {
   text-align: center;
   color: white;
@@ -35,12 +64,15 @@ h1 {
 }
 
 .keyboard {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(20, minmax(auto, 1.25em));
   grid-auto-rows: 3em;
   gap: 0.25em;
   justify-content: center;
   touch-action: none;
+
+  z-index: 1;
 }
 
 .key {
@@ -96,7 +128,7 @@ h1 {
 
 .key.wrong {
   --hue: 0;
-  --saturation: 30%;
+  --saturation: 10%;
   --lightness: 65%;
   border-color: #ffccd5;
 }
@@ -151,14 +183,14 @@ h1 {
 
 .tile[data-state="wrong"] {
   border: none;
-  background: linear-gradient(145deg, #ffb8d9, #ff99c8);
+  background-color: #AE9D9D ;
   color: white;
   text-shadow: none;
 }
 
 .tile[data-state="wrong-location"] {
   border: none;
-  background: linear-gradient(145deg, #ffde7d, #ffd166);
+  background: linear-gradient(145deg, #FFF8BA, #ffd166); /*#FFF8BA*/
   color: #ff6b9d;
 }
 

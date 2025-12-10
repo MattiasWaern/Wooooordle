@@ -15367,7 +15367,7 @@ function deleteKey() {
 function submitGuess() {
   const activeTiles = [...getActiveTiles()];
   if (activeTiles.length !== WORD_LENGTH) {
-    showAlert("Not enough letters");
+    showAlert("✨ Not enough letters ✨");
     shakeTiles(activeTiles);
     return;
   }
@@ -15377,7 +15377,7 @@ function submitGuess() {
   }, "");
 
   if (!dictionary.includes(guess)) {
-    showAlert("Not in word list");
+    showAlert("✨ Not in word list ✨");
     shakeTiles(activeTiles);
     return;
   }
