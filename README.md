@@ -39,7 +39,7 @@ Spelet:
 - **CSS3**
   - Grid & Flexbox
   - Animationer (`@keyframes`)
-- **JavaScript (Vanilla)**
+- **JavaScript**
   - DOM-manipulation
   - Event listeners
   - Dataset attributes
