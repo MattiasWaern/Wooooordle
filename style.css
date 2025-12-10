@@ -22,7 +22,6 @@ body {
   padding: 1em;
   font-size: clamp(0.9rem, 2.5vmin, 1.5rem);
   overflow-x: hidden;
-  overflow-Y: hidden;
   touch-action: manipulation;
   overscroll-behavior: none;
 }
