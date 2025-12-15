@@ -48,7 +48,9 @@ Spelet:
   ---
 
 ## Skärmdumpar
-<img width="1919" height="1079" alt="wordle" src="https://github.com/user-attachments/assets/ade2aea2-04dc-43b1-8646-7e16846dc8d0" />
-<img width="1919" height="1079" alt="Screenshot_2" src="https://github.com/user-attachments/assets/154e2f2a-8438-4dee-bd0f-bb6b9df2e10a" />
-<img width="1919" height="1079" alt="wordle3" src="https://github.com/user-attachments/assets/0e057901-19b2-43ef-9635-ac7f5b4ede9c" />
+<img width="1919" height="1079" alt="Screensshot_3" src="https://github.com/user-attachments/assets/a994a163-baa3-4885-b282-41400d0a1367" />
+<img width="1919" height="1079" alt="dsadas" src="https://github.com/user-attachments/assets/3a9ec6ca-53d0-4e41-8c35-87221492ff79" />
+<img width="1919" height="1079" alt="Screenshdsadaot_3" src="https://github.com/user-attachments/assets/265f6ccd-39a2-4bc0-8e1e-ec1fc55455ae" />
+
+
 
