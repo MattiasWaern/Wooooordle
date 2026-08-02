@@ -15305,9 +15305,6 @@ startInteraction();
 function startInteraction() {
   document.addEventListener("click", handleMouseClick);
   document.addEventListener("keydown", handleKeyPress);
-
-  console.log('random hint letter:', randomHint);
-  showAlert("DIN RANDOM BOKSTAV ÄR", 10000, randomHint);
 }
 
 function stopInteraction() {
@@ -15477,8 +15474,8 @@ function showAlert(message, duration = 1000) {
   const alert = document.createElement("div");
   alert.textContent = message;
   alert.classList.add("alert");
-  alertContainer.prepend(alert);
   alertContainer.prepend(randomHint);
+  alertContainer.prepend(alert);
   if (duration == null) return;
 
   setTimeout(() => {
@@ -15488,6 +15485,7 @@ function showAlert(message, duration = 1000) {
     });
   }, duration);
 }
+
 
 function shakeTiles(tiles) {
   tiles.forEach((tile) => {
@@ -15545,6 +15543,15 @@ function retryButton() {
       location.reload();
     }, 500);
   });
+}
+
+function showHint(){
+  const btn = document.getElementById("hints-button")
+
+ btn.addEventListener("Click", () => {
+    console.log("Knapp klickad")
+    showAlert("En random bokstav är:", randomHint, 10000);
+ })
 }
 
 console.log(targetWord);
