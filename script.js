@@ -15299,7 +15299,8 @@ const guessGrid = document.querySelector("[data-guess-grid]");
 // const msOffset = Date.now() - offsetFromDate
 // const dayOffset = msOffset / 1000 / 60 / 60 / 24
 const targetWord = targetWords[Math.floor(Math.random() * targetWords.length)];
-const hint = targetWord[Math.floor(Math.random() * targetWords.length)];
+const hint = targetWord[2];
+const randomHint = targetWord[Math.floor(Math.random() * targetWord.length)];
 startInteraction();
 
 function startInteraction() {
@@ -15307,6 +15308,7 @@ function startInteraction() {
   document.addEventListener("keydown", handleKeyPress);
 
   console.log(hint);
+  console.log('random hint:', randomHint);
 }
 
 function stopInteraction() {
@@ -15391,7 +15393,6 @@ function submitGuess() {
   // Initiera states som "wrong"
   const states = new Array(WORD_LENGTH).fill("wrong");
 
-  // PASS 1: markera gröna (correct) och "förbruka" målbokstaven
   for (let i = 0; i < WORD_LENGTH; i++) {
     if (guessLetters[i] === targetLetters[i]) {
       states[i] = "correct";
@@ -15399,7 +15400,6 @@ function submitGuess() {
     }
   }
 
-  // PASS 2: markera gula (wrong-location) där fortfarande kvarvarande bokstäver finns
   for (let i = 0; i < WORD_LENGTH; i++) {
     if (states[i] === "correct") continue;
     const idx = targetLetters.indexOf(guessLetters[i]);
