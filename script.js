@@ -15299,16 +15299,16 @@ const guessGrid = document.querySelector("[data-guess-grid]");
 // const msOffset = Date.now() - offsetFromDate
 // const dayOffset = msOffset / 1000 / 60 / 60 / 24
 const targetWord = targetWords[Math.floor(Math.random() * targetWords.length)];
-const hint = targetWord[2];
 const randomHint = targetWord[Math.floor(Math.random() * targetWord.length)];
+const hint = targetWord[randomHint];
 startInteraction();
 
 function startInteraction() {
   document.addEventListener("click", handleMouseClick);
   document.addEventListener("keydown", handleKeyPress);
 
-  console.log(hint);
-  console.log('random hint:', randomHint);
+  console.log('hint', hint);
+  console.log('random hint letter:', randomHint);
 }
 
 function stopInteraction() {
