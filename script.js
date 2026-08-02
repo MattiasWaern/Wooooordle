@@ -15305,6 +15305,8 @@ startInteraction();
 function startInteraction() {
   document.addEventListener("click", handleMouseClick);
   document.addEventListener("keydown", handleKeyPress);
+
+  showHint();
 }
 
 function stopInteraction() {
@@ -15474,7 +15476,6 @@ function showAlert(message, duration = 1000) {
   const alert = document.createElement("div");
   alert.textContent = message;
   alert.classList.add("alert");
-  alertContainer.prepend(randomHint);
   alertContainer.prepend(alert);
   if (duration == null) return;
 
@@ -15546,11 +15547,11 @@ function retryButton() {
 }
 
 function showHint(){
-  const btn = document.getElementById("hints-button")
+  const button = document.getElementById("hints-button")
 
- btn.addEventListener("Click", () => {
+ button.addEventListener("click", () => {
     console.log("Knapp klickad")
-    showAlert("En random bokstav är:", randomHint, 10000);
+    showAlert(`En random bokstav är: ${randomHint}`, 10000);
  })
 }
 

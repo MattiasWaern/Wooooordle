@@ -311,6 +311,31 @@ h1 {
   z-index: 2;
 }
 
+#hints-button{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 150px;
+  border-radius: 25px;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(145deg, #ff9ed8, #ff6bc1);
+  color: white;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(255, 105, 180, 0.4), 0 8px 0 #ff8ac6;
+  transition: ease 0.3s;
+}
+
+#hints-button:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
 #retry-button:hover {
   transform: translate(-50%, -50%) scale(1.05);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
