@@ -15307,6 +15307,7 @@ function startInteraction() {
   document.addEventListener("keydown", handleKeyPress);
 
   console.log('random hint letter:', randomHint);
+  showAlert("DIN RANDOM BOKSTAV ÄR", 10000, randomHint);
 }
 
 function stopInteraction() {
@@ -15477,6 +15478,7 @@ function showAlert(message, duration = 1000) {
   alert.textContent = message;
   alert.classList.add("alert");
   alertContainer.prepend(alert);
+  alertContainer.prepend(randomHint);
   if (duration == null) return;
 
   setTimeout(() => {
