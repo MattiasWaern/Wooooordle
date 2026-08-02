@@ -15300,6 +15300,7 @@ const guessGrid = document.querySelector("[data-guess-grid]");
 // const dayOffset = msOffset / 1000 / 60 / 60 / 24
 const targetWord = targetWords[Math.floor(Math.random() * targetWords.length)];
 const randomHint = targetWord[Math.floor(Math.random() * targetWord.length)];
+console.log(targetWord.split(""));
 startInteraction();
 
 function startInteraction() {
